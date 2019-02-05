@@ -1,4 +1,4 @@
-class HomePage {
+export class HomePage {
 
     getNameField() {
         return cy.get('#name');
@@ -26,6 +26,10 @@ class HomePage {
        return cy.get(`${columnName} div div.CrewMember-container`)
         .find('div.CrewMember-info div.CrewMemeber-name div:first');          
     }
+
+    candidateShouldNotBeFound(columnName, candidateName){
+        return cy.get(`${columnName} div`).should('not.contain', candidateName);          
+     }
     
     findCrewMemberInColumnByName(columnName, memberName){
         return cy
